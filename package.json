@@ -1,0 +1,21 @@
+{
+  "name": "markdown-title-copier",
+  "version": "1.0.0",
+  "description": "Chrome extension to copy page title in markdown format",
+  "module": "src/background.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun run --watch build",
+    "build": "bun build ./src/background.ts --outdir ./dist && bun build ./src/content.ts --outdir ./dist",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/chrome": "^0.0.260",
+    "typescript": "^5.3.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
