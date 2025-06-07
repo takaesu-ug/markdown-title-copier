@@ -8,21 +8,20 @@ chrome.storage.sync.get(['customShortcut'], (result) => {
   }
 });
 
-// ショートカットコマンドの処理
-chrome.commands.onCommand.addListener((command) => {
-  if (command === "copy-title") {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      const activeTab = tabs[0];
-      if (activeTab) {
-        chrome.tabs.sendMessage(activeTab.id!, { action: "copyTitle" });
-      }
-    });
-  }
-});
-
-// オプションページからのメッセージを処理
+// キーボードイベントをリッスン
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === "updateShortcut") {
     customShortcut = message.shortcut;
+  } else if (message.action === "checkShortcut") {
+    const pressedKeys = message.keys;
+    if (customShortcut && pressedKeys === customShortcut) {
+      // ショートカットが一致した場合、アクティブなタブにコピーコマンドを送信
+      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        const activeTab = tabs[0];
+        if (activeTab) {
+          chrome.tabs.sendMessage(activeTab.id!, { action: "copyTitle" });
+        }
+      });
+    }
   }
-}); 
+});

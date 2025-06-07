@@ -14,14 +14,5 @@
       "js": ["dist/content.js"]
     }
   ],
-  "commands": {
-    "copy-title": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+Y",
-        "mac": "Command+Shift+Y"
-      },
-      "description": "Copy page title in markdown format"
-    }
-  },
   "options_page": "options.html"
 } 
