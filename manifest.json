@@ -3,7 +3,7 @@
   "name": "Markdown Title Copier",
   "version": "1.0.0",
   "description": "Copy page title in markdown format with keyboard shortcut",
-  "permissions": ["activeTab", "clipboardWrite"],
+  "permissions": ["activeTab", "clipboardWrite", "storage"],
   "background": {
     "service_worker": "dist/background.js",
     "type": "module"
@@ -22,5 +22,6 @@
       },
       "description": "Copy page title in markdown format"
     }
-  }
+  },
+  "options_page": "options.html"
 } 

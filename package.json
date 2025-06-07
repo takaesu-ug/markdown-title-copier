@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "dev": "bun run --watch build",
-    "build": "bun build ./src/background.ts --outdir ./dist --target browser && bun build ./src/content.ts --outdir ./dist --target browser",
+    "build": "bun build ./src/background.ts --outdir ./dist --target browser && bun build ./src/content.ts --outdir ./dist --target browser && bun build ./src/options.ts --outdir ./dist --target browser",
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {
